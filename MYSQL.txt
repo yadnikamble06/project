@@ -1,0 +1,947 @@
+    1. create a database called 'assignment' (Note please do the assignment tasks in this database).
+
+mysql> CREATE DATABASE assignment;
+Query OK, 1 row affected (0.02 sec)
+
+   2. Create a table called authors with the following columns
+  authorid , name
+- choose appropriate datatypes for the columns
+	a) Insert the following data into the table
+		1, J K Rowling
+		2, Thomas Hardy
+		3, Oscar Wilde
+		4, Sidney Sheldon
+		5, Alistair Maclean
+		6, Jane Autsen
+
+mysql> CREATE TABLE Authors(AuthorId INTEGER primary key,
+    ->                                 Name VARCHAR(70));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into Authors values(1,'J K Rowling');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Authors values(2,'Thomas Hardy');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Authors values(3,'Oscar Wilde');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Authors values(4,'Sidney Sheldon');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Authors values(5,'Alistair MacLean');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Authors values(6,'Jane Austen');
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> select * from AUTHORS;
++----------+------------------+
+| AuthorId | Name             |
++----------+------------------+
+|        1 | J K Rowling      |
+|        2 | Thomas Hardy     |
+|        3 | Oscar Wilde      |
+|        4 | Sidney Sheldon   |
+|        5 | Alistair MacLean |
+|        6 | Jane Austen      |
++----------+------------------+
+6 rows in set (0.01 sec)
+
+  b) Add a couple of authors of your choice
+
+mysql> insert into Authors values(7,'Chetan Bhagat'),(8,'George Orwell');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from AUTHORS;
++----------+------------------+
+| AuthorId | Name             |
++----------+------------------+
+|        1 | J K Rowling      |
+|        2 | Thomas Hardy     |
+|        3 | Oscar Wilde      |
+|        4 | Sidney Sheldon   |
+|        5 | Alistair MacLean |
+|        6 | Jane Austen      |
+|        7 | Chetan Bhagat    |
+|        8 | George Orwell    |
++----------+------------------+
+8 rows in set (0.01 sec)
+
+  c) Change 'Alistair Maclean' to 'Alastair McNeal'
+
+mysql> update AUTHORS set name = 'Alistair McNeal' where AuthorId = 5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from AUTHORS;
++----------+-----------------+
+| AuthorId | Name            |
++----------+-----------------+
+|        1 | J K Rowling     |
+|        2 | Thomas Hardy    |
+|        3 | Oscar Wilde     |
+|        4 | Sidney Sheldon  |
+|        5 | Alistair McNeal |
+|        6 | Jane Austen     |
+|        7 | Chetan Bhagat   |
+|        8 | George Orwell   |
++----------+-----------------+
+8 rows in set (0.00 sec)
+
+
+        3. Create a table called Books with the following  columns
+        bookid, title, authorid
+   - choose appropriate datatypes for the columns
+
+            a) Insert the following records
+
+		1,Harry Potter and the Philosopher's Stone,1
+		2,Harry Potter and the Chamber of Secrets,1
+		3,Harry Potter and the Half-Blood Prince,1
+		4,Harry Potter and the Goblet of Fire,1
+		5,Night Without End,5,
+		6,Fear is the Key,5
+		7,Where Eagles Dare,5
+		8,Sense and Sensibility,6
+		9,Pride and Prejudice,6
+		10,Emma,6
+		11,Random Book,22
+
+
+mysql> CREATE TABLE Books(Bookid integer,title varchar(70),authorid integer);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into Books values('1','Harry Potter and Philosophers Stone','1'),('2','Harry Potter and the Chamber of Secrets','1'),('3','Harry Potter and the Half-Blood Prince','1'),('4','Harry Potter and the Goblet of Fire','1'),('5','Night Without End','5'),('6','Fear is the Key','5'),('7','Where Eagles Dare','5'),('8','Sense and Sensibility','6'),('9','Pride and Prejudice','6'),('10','Emma','6'),('11','Random Book','22');
+Query OK, 11 rows affected (0.01 sec)
+Records: 11  Duplicates: 0  Warnings: 0
+
+mysql> select * from Books;
++--------+-----------------------------------------+----------+
+| Bookid | title                                   | authorid |
++--------+-----------------------------------------+----------+
+|      1 | Harry Potter and Philosophers Stone     |        1 |
+|      2 | Harry Potter and the Chamber of Secrets |        1 |
+|      3 | Harry Potter and the Half-Blood Prince  |        1 |
+|      4 | Harry Potter and the Goblet of Fire     |        1 |
+|      5 | Night Without End                       |        5 |
+|      6 | Fear is the Key                         |        5 |
+|      7 | Where Eagles Dare                       |        5 |
+|      8 | Sense and Sensibility                   |        6 |
+|      9 | Pride and Prejudice                     |        6 |
+|     10 | Emma                                    |        6 |
+|     11 | Random Book                             |       22 |
++--------+-----------------------------------------+----------+
+11 rows in set (0.00 sec)
+
+
+    b) Delete 'Random Book' from the table.
+
+mysql> delete from Books where title = 'Random Book';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Books
+    -> ;
++--------+-----------------------------------------+----------+
+| Bookid | title                                   | authorid |
++--------+-----------------------------------------+----------+
+|      1 | Harry Potter and Philosophers Stone     |        1 |
+|      2 | Harry Potter and the Chamber of Secrets |        1 |
+|      3 | Harry Potter and the Half-Blood Prince  |        1 |
+|      4 | Harry Potter and the Goblet of Fire     |        1 |
+|      5 | Night Without End                       |        5 |
+|      6 | Fear is the Key                         |        5 |
+|      7 | Where Eagles Dare                       |        5 |
+|      8 | Sense and Sensibility                   |        6 |
+|      9 | Pride and Prejudice                     |        6 |
+|     10 | Emma                                    |        6 |
++--------+-----------------------------------------+----------+
+10 rows in set (0.01 sec)
+
+
+   4. Rename the table Books to Favbooks and Authors to Favauthors.
+
+mysql> rename table Books to Favbooks, AUTHORS to Favauthors;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from Favbooks;
++--------+-----------------------------------------+----------+
+| Bookid | title                                   | authorid |
++--------+-----------------------------------------+----------+
+|      1 | Harry Potter and Philosophers Stone     |        1 |
+|      2 | Harry Potter and the Chamber of Secrets |        1 |
+|      3 | Harry Potter and the Half-Blood Prince  |        1 |
+|      4 | Harry Potter and the Goblet of Fire     |        1 |
+|      5 | Night Without End                       |        5 |
+|      6 | Fear is the Key                         |        5 |
+|      7 | Where Eagles Dare                       |        5 |
+|      8 | Sense and Sensibility                   |        6 |
+|      9 | Pride and Prejudice                     |        6 |
+|     10 | Emma                                    |        6 |
++--------+-----------------------------------------+----------+
+10 rows in set (0.01 sec)
+
+mysql> select * from Favauthors;
++----------+-----------------+
+| AuthorId | Name            |
++----------+-----------------+
+|        1 | J K Rowling     |
+|        2 | Thomas Hardy    |
+|        3 | Oscar Wilde     |
+|        4 | Sidney Sheldon  |
+|        5 | Alistair McNeal |
+|        6 | Jane Austen     |
+|        7 | Chetan Bhagat   |
+|        8 | George Orwell   |
++----------+-----------------+
+8 rows in set (0.00 sec)
+
+
+      5. Create the following tables. Use auto increment wherever applicable
+
+	a. Products
+
+	product_id - primary key
+	product_name - cannot be null and only unique values are allowed
+	description
+	supplier_id - foreign key of supplier table
+
+	b. Suppliers
+
+	supplier_id - primary key
+	supplier_name 
+	location
+
+
+	c. Stock
+
+	id - primary key
+	product_id - foreign key of product table
+	balance_stock  
+
+
+
+mysql> CREATE TABLE Products(productId INTEGER primary key, ProductName VARCHAR(30), SupplierId INTEGER, foreign key(SupplierId) references Products(ProductId));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE TABLE Suppliers(supplierId INTEGER primary key, SupplierName VARCHAR(30), location VARCHAR(30));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE TABLE Stock(id INTEGER primary key,productId INTEGER, balance_stock INTEGER, foreign key(productId) references Stock(Id));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into Products values('1','Blue Riband','1'),('2','Burtons','2'),('3','Cadbury Caramel Crunch','3'),('4','Cadbury Fingers','4'),('5','Cadbury Snack','5'),('6','Biscuits','6'),('7','Kinder','7'),('8','Kits','8'),('9','Oreo','9'),('10','Tim Tam','10');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from Products;
++-----------+------------------------+------------+
+| productId | ProductName            | SupplierId |
++-----------+------------------------+------------+
+|         1 | Blue Riband            |          1 |
+|         2 | Burtons                |          2 |
+|         3 | Cadbury Caramel Crunch |          3 |
+|         4 | Cadbury Fingers        |          4 |
+|         5 | Cadbury Snack          |          5 |
+|         6 | Biscuits               |          6 |
+|         7 | Kinder                 |          7 |
+|         8 | Kits                   |          8 |
+|         9 | Oreo                   |          9 |
+|        10 | Tim Tam                |         10 |
++-----------+------------------------+------------+
+
+mysql> insert into Suppliers values('1','Raghu','Chakan'),('2','Raju','Pimpari-Chinchwad'),('3','Ramesh','Khandala'),('4','Mahesh','Chinchwad'),('5','Kishor','Buldhana'),('6','Ravi','Delhi'),('7','Amit','Mumbai'),('8','Pankaj','Thane'),('9','Abhishek','Lonavala'),('10','Anay','Karnataka');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from Suppliers;
++------------+--------------+-------------------+
+| supplierId | SupplierName | location          |
++------------+--------------+-------------------+
+|          1 | Raghu        | Chakan            |
+|          2 | Raju         | Pimpari-Chinchwad |
+|          3 | Ramesh       | Khandala          |
+|          4 | Mahesh       | Chinchwad         |
+|          5 | Kishor       | Buldhana          |
+|          6 | Ravi         | Delhi             |
+|          7 | Amit         | Mumbai            |
+|          8 | Pankaj       | Thane             |
+|          9 | Abhishek     | Lonavala          |
+|         10 | Anay         | Karnataka         |
++------------+--------------+-------------------+
+
+mysql> insert into Stock values('1','1','50'),('2','2','55'),('3','3','65'),('4','4','68'),('5','5','70'),('6','6','72'),('7','7','74'),('8','8','78'),('9','9','80'),('10','10','77');
+Query OK, 10 rows affected (0.03 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from Stock;
++----+-----------+---------------+
+| id | productId | balance_stock |
++----+-----------+---------------+
+|  1 |         1 |            50 |
+|  2 |         2 |            55 |
+|  3 |         3 |            65 |
+|  4 |         4 |            68 |
+|  5 |         5 |            70 |
+|  6 |         6 |            72 |
+|  7 |         7 |            74 |
+|  8 |         8 |            78 |
+|  9 |         9 |            80 |
+| 10 |        10 |            77 |
++----+-----------+---------------+
+10 rows in set (0.02 sec)
+
+
+   6. Enter some records into the three tables.
+
+mysql> insert into Products values('11','Parle','11'),('12','Dairy Milk Cadbury','12');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from Products;
++-----------+------------------------+------------+
+| productId | ProductName            | SupplierId |
++-----------+------------------------+------------+
+|         1 | Blue Riband            |          1 |
+|         2 | Burtons                |          2 |
+|         3 | Cadbury Caramel Crunch |          3 |
+|         4 | Cadbury Fingers        |          4 |
+|         5 | Cadbury Snack          |          5 |
+|         6 | Biscuits               |          6 |
+|         7 | Kinder                 |          7 |
+|         8 | Kits                   |          8 |
+|         9 | Oreo                   |          9 |
+|        10 | Tim Tam                |         10 |
+|        11 | Parle                  |         11 |
+|        12 | Dairy Milk Cadbury     |         12 |
++-----------+------------------------+------------+
+12 rows in set (0.00 sec)
+
+mysql> insert into Suppliers values('11','Manoj','Chandigadh'),('12','Vishal','Hariyana');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from Suppliers;
++------------+--------------+-------------------+
+| supplierId | SupplierName | location          |
++------------+--------------+-------------------+
+|          1 | Raghu        | Chakan            |
+|          2 | Raju         | Pimpari-Chinchwad |
+|          3 | Ramesh       | Khandala          |
+|          4 | Mahesh       | Chinchwad         |
+|          5 | Kishor       | Buldhana          |
+|          6 | Ravi         | Delhi             |
+|          7 | Amit         | Mumbai            |
+|          8 | Pankaj       | Thane             |
+|          9 | Abhishek     | Lonavala          |
+|         10 | Anay         | Karnataka         |
+|         11 | Manoj        | Chandigadh        |
+|         12 | Vishal       | Hariyana          |
++------------+--------------+-------------------+
+12 rows in set (0.01 sec)
+
+mysql> insert into Stock values('11','11','80'),('12','12','85');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from Stock;
++----+-----------+---------------+
+| id | productId | balance_stock |
++----+-----------+---------------+
+|  1 |         1 |            50 |
+|  2 |         2 |            55 |
+|  3 |         3 |            65 |
+|  4 |         4 |            68 |
+|  5 |         5 |            70 |
+|  6 |         6 |            72 |
+|  7 |         7 |            74 |
+|  8 |         8 |            78 |
+|  9 |         9 |            80 |
+| 10 |        10 |            77 |
+| 11 |        11 |            80 |
+| 12 |        12 |            85 |
++----+-----------+---------------+
+
+     7. Modify the supplier table to make supplier name unique and not NULL.
+
+mysql> ALTER TABLE Suppliers add constraint UC_Supplier UNIQUE(SupplierName);
+
+     8. Modify the emp table as follows
+  	a. Add a column called deptno
+  	b. Set the value of deptno in the following order
+  	       deptno = 20 where emp_id is divisible by 2
+  	       deptno = 30 where emp_id is divisible by 3
+  	       deptno = 40 where emp_id is divisible by 4
+  	       deptno = 50 where emp_id is divisible by 5
+  	       deptno = 10 for the remaining records.
+
+       mysql> CREATE TABLE emp(empID int, FirstName varchar(30), LastName varchar(30), City varchar(30), DeptNo int);
+     Query OK, 0 rows affected (0.05 sec)
+
+      mysql> insert into emp values('1','Ramesh','Shinde','Pune','10'),('2','Rajendra','Patil','Chinchwad','20'),('3','Abhishek','Shegokar','Pune','30'),('4','Sanskar','Hande','Pune','40'),('5','Shivam','Kale','Pune','50');
+      Query OK, 5 rows affected (0.02 sec)
+      Records: 5  Duplicates: 0  Warnings: 0
+      mysql> select * from emp;
++-------+-----------+----------+-----------+--------+
+| empID | FirstName | LastName | City      | DeptNo |
++-------+-----------+----------+-----------+--------+
+|     1 | Ramesh    | Shinde   | Pune      |     10 |
+|     2 | Rajendra  | Patil    | Chinchwad |     20 |
+|     3 | Abhishek  | Shegokar | Pune      |     30 |
+|     4 | Sanskar   | Hande    | Pune      |     40 |
+|     5 | Shivam    | Kale     | Pune      |     50 |
++-------+-----------+----------+-----------+--------+
+5 rows in set (0.01 sec)
+
+
+     9. Create a unique, hash index on the emp_id column.
+ 
+ mysql> CREATE UNIQUE INDEX uidx_pid ON emp (empID);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+    1. select all employees in department 10 whose salary is greater than 3000. [table: employee]
+  mysql> Use assignment;
+Database changed
+mysql> ALTER TABLE emp ADD Salary int;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE emp SET Salary=3500 WHERE empID=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> UPDATE emp SET Salary=4000 WHERE empID=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> UPDATE emp SET Salary=5000 WHERE empID=3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> UPDATE emp SET Salary=5500 WHERE empID=4;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> UPDATE emp SET Salary=6500 WHERE empID=5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++-------+-----------+----------+-----------+--------+--------+
+| empID | FirstName | LastName | City      | DeptNo | Salary |
++-------+-----------+----------+-----------+--------+--------+
+|     1 | Ramesh    | Shinde   | Pune      |     10 |   3500 |
+|     2 | Rajendra  | Patil    | Chinchwad |     20 |   4000 |
+|     3 | Abhishek  | Shegokar | Pune      |     30 |   5000 |
+|     4 | Sanskar   | Hande    | Pune      |     40 |   5500 |
+|     5 | Shivam    | Kale     | Pune      |     50 |   6500 |
++-------+-----------+----------+-----------+--------+--------+
+
+mysql> insert into emp values('6','Shahid','Shaikh','Pune','10','3000'),('7','Nishant','Kalamkar','Pune','10','2500'),('8','Rajas','Bangal','Pune','10','3000');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++-------+-----------+----------+-----------+--------+--------+
+| empID | FirstName | LastName | City      | DeptNo | Salary |
++-------+-----------+----------+-----------+--------+--------+
+|     1 | Ramesh    | Shinde   | Pune      |     10 |   3500 |
+|     2 | Rajendra  | Patil    | Chinchwad |     20 |   4000 |
+|     3 | Abhishek  | Shegokar | Pune      |     30 |   5000 |
+|     4 | Sanskar   | Hande    | Pune      |     40 |   5500 |
+|     5 | Shivam    | Kale     | Pune      |     50 |   6500 |
+|     6 | Shahid    | Shaikh   | Pune      |     10 |   3000 |
+|     7 | Nishant   | Kalamkar | Pune      |     10 |   2500 |
+|     8 | Rajas     | Bangal   | Pune      |     10 |   3000 |
++-------+-----------+----------+-----------+--------+--------+
+8 rows in set (0.01 sec)
+
+mysql> select * from emp WHERE DeptNo=10 and Salary > 3000;
++-------+-----------+----------+------+--------+--------+
+| empID | FirstName | LastName | City | DeptNo | Salary |
++-------+-----------+----------+------+--------+--------+
+|     1 | Ramesh    | Shinde   | Pune |     10 |   3500 |
++-------+-----------+----------+------+--------+--------+
+1 row in set (0.00 sec)
+
+
+    2. The grading of students based on the marks they have obtained is done as follows
+
+	40 to 50 -> Second Class
+	50 to 60 -> First Class
+	60 to 80 -> First Class
+	80 to 100 -> Distinctions
+
+
+     mysql> CREATE TABLE Students(studentID int, studentname varchar(40), surname varchar(40), grades varchar(40), marks int, class varchar(40));
+Query OK, 0 rows affected (0.05 sec)
+
+  mysql> insert into Students values('1','Akash','Panikar','A','89','Distinction'),('2','Swamini','Ketkar','c','55','Second Higher Class'),('3','Priya','Gadekar','A','88','Distinction'),('4','Megha','Pawar','B','65','First Class'),('5','Anand','Chajjed','D','48','Second Higher Class'),('6','Kaustubh','Bankar','B','68','First Class'),('7','Pranav','Katkar','c','50','Second Class'),('8','Gauri','Raut','D','40','Second Class'),('9','Bhushan','Singh','A','90','Distinction'),('10','Rishab','Hiran','A','92','Distinction');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+mysql> select * from Students;
++-----------+-------------+---------+--------+-------+---------------------+
+| studentID | studentname | surname | grades | marks | class               |
++-----------+-------------+---------+--------+-------+---------------------+
+|         1 | Akash       | Panikar | A      |    89 | Distinction         |
+|         2 | Swamini     | Ketkar  | c      |    55 | Second Higher Class |
+|         3 | Priya       | Gadekar | A      |    88 | Distinction         |
+|         4 | Megha       | Pawar   | B      |    65 | First Class         |
+|         5 | Anand       | Chajjed | D      |    48 | Second Higher Class |
+|         6 | Kaustubh    | Bankar  | B      |    68 | First Class         |
+|         7 | Pranav      | Katkar  | c      |    50 | Second Class        |
+|         8 | Gauri       | Raut    | D      |    40 | Second Class        |
+|         9 | Bhushan     | Singh   | A      |    90 | Distinction         |
+|        10 | Rishab      | Hiran   | A      |    92 | Distinction         |
++-----------+-------------+---------+--------+-------+---------------------+
+
+  a. How many students  have graduated with first class?
+	 
+   mysql> SELECT * FROM Students WHERE class= "First Class";
++-----------+-------------+---------+--------+-------+-------------+
+| studentID | studentname | surname | grades | marks | class       |
++-----------+-------------+---------+--------+-------+-------------+
+|         4 | Megha       | Pawar   | B      |    65 | First Class |
+|         6 | Kaustubh    | Bankar  | B      |    68 | First Class |
++-----------+-------------+---------+--------+-------+-------------+
+
+   b. How many students  have obtained distinction?
+  
+ mysql> SELECT * FROM Students WHERE class= "Distinction";
++-----------+-------------+---------+--------+-------+-------------+
+| studentID | studentname | surname | grades | marks | class       |
++-----------+-------------+---------+--------+-------+-------------+
+|         1 | Akash       | Panikar | A      |    89 | Distinction |
+|         3 | Priya       | Gadekar | A      |    88 | Distinction |
+|         9 | Bhushan     | Singh   | A      |    90 | Distinction |
+|        10 | Rishab      | Hiran   | A      |    92 | Distinction |
++-----------+-------------+---------+--------+-------+-------------+
+
+
+ 3. Get a list of city names from station with even ID numbers only. Exclude duplicates from your answer.[table: station]
+       
+    mysql> CREATE TABLE Station(ID integer, city char(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into Station values('2','Pune'),('4','Mumbai'),('6','Aurangabad'),('8','Ahmednagar'),('10','Jalgaon'),('12','Nagpur'),('14','Igatpuri'),('16','Mumbai'),('18','Delhi'),('20','Lonavala');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from Station;
++------+------------+
+| ID   | city       |
++------+------------+
+|    2 | Pune       |
+|    4 | Mumbai     |
+|    6 | Aurangabad |
+|    8 | Ahmednagar |
+|   10 | Jalgaon    |
+|   12 | Nagpur     |
+|   14 | Igatpuri   |
+|   16 | Mumbai     |
+|   18 | Delhi      |
+|   20 | Lonavala   |
++------+------------+
+
+   4. Find the difference between the total number of city entries in the table and the number of distinct city entries in the table.
+In other words, if N is the number of city entries in station, and N1 is the number of distinct city names in station, write a query to find the value of N-N1 from station.[table: station]
+
+     mysql> SELECT count(city) - count(DISTINCT city) FROM Station;
++------------------------------------+
+| count(city) - count(DISTINCT city) |
++------------------------------------+
+|                                  1 |
++------------------------------------+
+
+  5. a. Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates. [Hint: Use RIGHT() / LEFT() methods ]
+
+     mysql> Select city from Station WHERE REGEXP_LIKE(city,'^[aeiou]');
++------------+
+| city       |
++------------+
+| Aurangabad |
+| Ahmednagar |
+| Igatpuri   |
++------------+
+
+   b. Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates.
+
+    mysql> SELECT DISTINCT city FROM Station WHERE city RLIKE '^[aeiouAEIOU].*[aeiouAEIOU]$';
++----------+
+| city     |
++----------+
+| Igatpuri |
++----------+
+
+   c. Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates.
+   
+     mysql> SELECT DISTINCT city FROM Station WHERE city RLIKE '^[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ].*';
++----------+
+| city     |
++----------+
+| Pune     |
+| Mumbai   |
+| Jalgaon  |
+| Nagpur   |
+| Delhi    |
+| Lonavala |
++----------+
+     
+   d. Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates. [table: station]
+      
+      mysql> SELECT DISTINCT city FROM Station WHERE city NOT RLIKE '^[^aeiouAEIOU].*|.*[aeiouAEIOU]$';
++------------+
+| city       |
++------------+
+| Aurangabad |
+| Ahmednagar |
++------------+
+
+       9. How many cities in the CITY table have a Population larger than 100000. [table: city]
+
+          create table city(id int, city_name varchar(20), country varchar(20), district varchar(20), district_population int, countrycode int);
+
+insert into city values('1','Pune','India','Pune','3124458','+91'),('2','Tokyo','Japan','Ginza','3435191','+81'),('3','Delhi','India','New Delhi','2399141','+91'),('4','New York City','United States','Bronx','150000','+1'),('5','Los Angeles','California','Mayor','3979576','+209'),('6','Shanghai','China','Puxi','1101140','+86'),('7','Dhaka','Bangladesh','Dhaka','2155161','+880'),('8','Graze','Austria','Coimbatore','1526201','+43');
+
++------+---------------+---------------+------------+---------------------+-------------+
+| id   | city_name     | country       | district   | district_population | countrycode |
++------+---------------+---------------+------------+---------------------+-------------+
+|    1 | Pune          | India         | Pune       |             3124458 |          91 |
+|    2 | Tokyo         | Japan         | Ginza      |             3435191 |          81 |
+|    3 | Delhi         | India         | New Delhi  |             2399141 |          91 |
+|    4 | New York City | United States | Bronx      |              150000 |           1 |
+|    5 | Los Angeles   | California    | Mayor      |             3979576 |         209 |
+|    6 | Shanghai      | China         | Puxi       |             1101140 |          86 |
+|    7 | Dhaka         | Bangladesh    | Dhaka      |             2155161 |         880 |
+|    8 | Graze         | Austria       | Coimbatore |             1526201 |          43 |
++------+---------------+---------------+------------+---------------------+-------------+
+           
+
+                 SELECT * FROM City WHERE district_Population > 100000;
++------+---------------+---------------+------------+---------------------+-------------+-----------------+
+| id   | city_name     | country       | district   | district_population | countrycode | city_population |
++------+---------------+---------------+------------+---------------------+-------------+-----------------+
+|    1 | Pune          | India         | Pune       |             3124458 |          91 |         3010028 |
+|    2 | Tokyo         | Japan         | Ginza      |             3435191 |          81 |         3230101 |
+|    3 | Delhi         | India         | New Delhi  |             2399141 |          91 |         2081111 |
+|    4 | New York City | United States | Bronx      |              150000 |           1 |          800000 |
+|    5 | Los Angeles   | California    | Mayor      |             3979576 |         209 |         3369421 |
+|    6 | Shanghai      | China         | Puxi       |             1101140 |          86 |         1010120 |
+|    7 | Dhaka         | Bangladesh    | Dhaka      |             2155161 |         880 |         1222105 |
+|    8 | Graze         | Austria       | Coimbatore |             1526201 |          43 |         1011110 |
++------+---------------+---------------+------------+---------------------+-------------+-----------------+
+   
+
+   10. What is the total population of California? [table: city]
+
+     mysql> SELECT SUM(city_population) FROM city WHERE country='California';
++----------------------+
+| SUM(city_population) |
++----------------------+
+|              3369421 |
++----------------------+
+
+11. What is the average population of the districts in each country? [table: city]
+
+ create table country(name char(20), code int(5), country_continent char(10));
+insert into country values('India','91','Asia'),('Japan','81','Asia'),('UnitedStates','1','NA'),('California','209','NA'),('China','86','Asia'),('Bangladesh','880','Asia'),('Austria','43','Europe');
+
+  SELECT country.name, FLOOR(AVG(district_population)) FROM country, city WHERE country.code = city.countrycode GROUP BY country.name;
+ 
++--------------+---------------------------------+
+| name         | FLOOR(AVG(district_population)) |
++--------------+---------------------------------+
+| India        |                         2761799 |
+| Japan        |                         3435191 |
+| UnitedStates |                          150000 |
+| California   |                         3979576 |
+| China        |                         1101140 |
+| Bangladesh   |                         2155161 |
+| Austria      |                         1526201 |
++--------------+---------------------------------+
+
+
+
+
+
+
+Write a stored procedure to insert a record into the cancellations table for all cancelled orders. 
+STEPS: a. Create a table called cancellations with the following fields
+id (primary key),  custumernumber (foreign key), ordernumber (foreign key), comments
+All values except id should be taken from the order table.
+b. Read through the orders table . If an order is cancelled, then put an entry in the cancellations table.
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `orders_cursor1`()
+BEGIN
+declare lcl_statuss varchar(15);
+declare lcl_orderNumber int;
+declare lcl_customerNumber int;
+
+declare excep_raised  integer default 0;
+
+declare orders_cur cursor for select orderNumber, customerNumber, statuss from orders;
+declare continue handler for NOT FOUND set excep_raised = 1;
+
+open orders_cur;
+
+readloop:LOOP
+
+	fetch orders_cur into lcl_orderNumber, lcl_customerNumber, lcl_statuss;
+    
+    if excep_raised = 1 then
+    leave readloop;
+    end if;
+    
+    if lcl_statuss = 'Cancelled'  then
+    insert into cancellation (orderNumber, customerNumber, statuss)
+    values (lcl_orderNumber, lcl_customerNumber, 'Cancelled');
+    end if;
+    
+    end Loop readloop;
+    
+    close orders_cur;
+END
+
+mysql> desc cancellation;
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| id             | int         | NO   | PRI | NULL    | auto_increment |
+| customerNumber | int         | YES  | MUL | NULL    |                |
+| orderNumber    | int         | YES  | MUL | NULL    |                |
+| statuss        | varchar(15) | YES  |     | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.07 sec)
+
+mysql> call orders_cursor1();
+Query OK, 0 rows affected (0.86 sec)
+
+mysql> select * from cancellation;
++----+----------------+-------------+-----------+
+| id | customerNumber | orderNumber | statuss   |
++----+----------------+-------------+-----------+
+|  1 |            112 |       11201 | Cancelled |
+|  2 |            321 |       11141 | Cancelled |
+|  3 |            150 |       11511 | Cancelled |
+|  4 |            200 |       11212 | Cancelled |
+|  5 |            333 |       11304 | Cancelled |
+|  6 |            131 |       11544 | Cancelled |
++----+----------------+-------------+-----------+
+6 rows in set (0.00 sec)
+
+Write function that takes the customernumber as input and returns the purchase_status based on the following criteria . [table:Payments]
+
+if the total purchase amount for the customer is < 25000 status = Silver, amount between 25000 and 50000, status = Gold
+if amount > 50000 Platinum
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `CustomerLevel`(credit decimal(10,2)) RETURNS varchar(20) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+declare customerlevel varchar(20);
+if credit > 50000 then
+	set customerlevel = 'PLATINUM';
+    elseif (credit >= 25000 AND
+			credit <= 50000) then
+        set customerlevel = 'GOLD';
+     elseif credit < 25000 then
+		set customerlevel = 'SILVER';
+        end if;
+RETURN (customerlevel);
+END
+
+mysql> select CustomerName, CustomerLevel(creditLimit) from customers order by CustomerName;
++------------------------------------+----------------------------+
+| CustomerName                       | CustomerLevel(creditLimit) |
++------------------------------------+----------------------------+
+| Alpha Cognac                       | PLATINUM                   |
+| American Souvenirs Inc             | SILVER                     |
+| Amica Models & Co.                 | PLATINUM                   |
+| ANG Resellers                      | SILVER                     |
+| Anna's Decorations, Ltd            | PLATINUM                   |
+| Anton Designs, Ltd.                | SILVER                     |
+| Asian Shopping Network, Co         | SILVER                     |
+| Asian Treasures, Inc.              | SILVER                     |
+| Atelier graphique                  | NULL                       |
+| Australian Collectables, Ltd       | PLATINUM                   |
+| Australian Collectors, Co.         | PLATINUM                   |
+| Australian Gift Network, Co        | PLATINUM                   |
+| Auto Associés & Cie.               | PLATINUM                   |
+| Auto Canal+ Petit                  | PLATINUM                   |
+| Auto-Moto Classics Inc.            | NULL                       |
+| AV Stores, Co.                     | PLATINUM                   |
+| Baane Mini Imports                 | PLATINUM                   |
+| Bavarian Collectables Imports, Co. | PLATINUM                   |
+| BG&E Collectables                  | SILVER                     |
+| Blauer See Auto, Co.               | PLATINUM                   |
+| Boards & Toys Co.                  | NULL                       |
+| CAF Imports                        | PLATINUM                   |
+| Cambridge Collectables Co.         | NULL                       |
+| Canadian Gift Exchange Network     | PLATINUM                   |
+| Classic Gift Ideas, Inc            | PLATINUM                   |
+| Classic Legends Inc.               | PLATINUM                   |
+| Clover Collections, Co.            | PLATINUM                   |
+| Collectable Mini Designs Co.       | PLATINUM                   |
+| Collectables For Less Inc.         | PLATINUM                   |
+| Corporate Gift Ideas Co.           | PLATINUM                   |
+| Corrida Auto Replicas, Ltd         | PLATINUM                   |
+| Cramer Spezialitäten, Ltd          | SILVER                     |
+| Cruz & Sons Co.                    | PLATINUM                   |
+| Daedalus Designs Imports           | PLATINUM                   |
+| Danish Wholesale Imports           | PLATINUM                   |
+| Der Hund Imports                   | SILVER                     |
+| Diecast Classics Inc.              | PLATINUM                   |
+| Diecast Collectables               | PLATINUM                   |
+| Double Decker Gift Stores, Ltd     | NULL                       |
+| Down Under Souveniers, Inc         | PLATINUM                   |
+| Dragon Souveniers, Ltd.            | PLATINUM                   |
+| Enaco Distributors                 | PLATINUM                   |
+| Euro+ Shopping Channel             | PLATINUM                   |
+| Extreme Desk Decorations, Ltd      | PLATINUM                   |
+| Feuer Online Stores, Inc           | SILVER                     |
+| Franken Gifts, Co                  | SILVER                     |
+| Frau da Collezione                 | NULL                       |
+| FunGiftIdeas.com                   | PLATINUM                   |
+| Gift Depot Inc.                    | PLATINUM                   |
+| Gift Ideas Corp.                   | NULL                       |
+| Gifts4AllAges.com                  | NULL                       |
+| giftsbymail.co.uk                  | PLATINUM                   |
+| GiftsForHim.com                    | PLATINUM                   |
+| Handji Gifts& Co                   | PLATINUM                   |
+| Havel & Zbyszek Co                 | SILVER                     |
+| Heintze Collectables               | PLATINUM                   |
+| Herkku Gifts                       | PLATINUM                   |
+| Iberia Gift Imports, Corp.         | PLATINUM                   |
+| Kelly's Gift Shop                  | PLATINUM                   |
+| King Kong Collectables, Co.        | PLATINUM                   |
+| Kommission Auto                    | SILVER                     |
+| Kremlin Collectables, Co.          | SILVER                     |
+| L'ordine Souveniers                | PLATINUM                   |
+| La Corne Dabondance, Co.           | PLATINUM                   |
+| La Rochelle Gifts                  | PLATINUM                   |
+| Land of Toys Inc.                  | PLATINUM                   |
+| Lisboa Souveniers, Inc             | SILVER                     |
+| Lyon Souveniers                    | PLATINUM                   |
+| Marseille Mini Autos               | PLATINUM                   |
+| Marta's Replicas Co.               | PLATINUM                   |
+| Men 'R' US Retailers, Ltd.         | PLATINUM                   |
+| Messner Shopping Network           | SILVER                     |
+| Microscale Inc.                    | NULL                       |
+| Mini Auto Werke                    | NULL                       |
+| Mini Caravy                        | PLATINUM                   |
+| Mini Classics                      | PLATINUM                   |
+| Mini Creations Ltd.                | PLATINUM                   |
+| Mini Gifts Distributors Ltd.       | PLATINUM                   |
+| Mini Wheels Co.                    | PLATINUM                   |
+| Mit Vergnügen & Co.                | SILVER                     |
+| Motor Mint Distributors Inc.       | PLATINUM                   |
+| Muscle Machine Inc                 | PLATINUM                   |
+| Natürlich Autos                    | SILVER                     |
+| Norway Gifts By Mail, Co.          | PLATINUM                   |
+| Online Diecast Creations Co.       | PLATINUM                   |
+| Online Mini Collectables           | PLATINUM                   |
+| Osaka Souveniers Co.               | PLATINUM                   |
+| Oulu Toy Supplies, Inc.            | PLATINUM                   |
+| Petit Auto                         | PLATINUM                   |
+| Porto Imports Co.                  | SILVER                     |
+| Precious Collectables              | SILVER                     |
+| Québec Home Shopping Network       | NULL                       |
+| Raanan Stores, Inc                 | SILVER                     |
+| Reims Collectables                 | PLATINUM                   |
+| Rovelli Gifts                      | PLATINUM                   |
+| Royal Canadian Collectables, Ltd.  | PLATINUM                   |
+| Royale Belge                       | NULL                       |
+| Salzburg Collectables              | PLATINUM                   |
+| SAR Distributors, Co               | SILVER                     |
+| Saveley & Henriot, Co.             | PLATINUM                   |
+| Scandinavian Gift Ideas            | PLATINUM                   |
+| Schuyler Imports                   | SILVER                     |
+| Signal Collectibles Ltd.           | PLATINUM                   |
+| Signal Gift Stores                 | PLATINUM                   |
+| Souveniers And Things Co.          | PLATINUM                   |
+| Stuttgart Collectable Exchange     | SILVER                     |
+| Stylish Desk Decors, Co.           | PLATINUM                   |
+| Suominen Souveniers                | PLATINUM                   |
+| Super Scale Inc.                   | PLATINUM                   |
+| Technics Stores Inc.               | PLATINUM                   |
+| Tekni Collectables Inc.            | NULL                       |
+| The Sharp Gifts Warehouse          | PLATINUM                   |
+| Tokyo Collectables, Ltd            | PLATINUM                   |
+| Toms Spezialitäten, Ltd            | PLATINUM                   |
+| Toys of Finland, Co.               | PLATINUM                   |
+| Toys4GrownUps.com                  | PLATINUM                   |
+| UK Collectables, Ltd.              | PLATINUM                   |
+| Vida Sport, Ltd                    | PLATINUM                   |
+| Vitachrome Inc.                    | PLATINUM                   |
+| Volvo Model Replicas, Co           | PLATINUM                   |
+| Warburg Exchange                   | SILVER                     |
+| West Coast Collectables Co.        | PLATINUM                   |
++------------------------------------+----------------------------+
+122 rows in set (0.23 sec)
+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCustomerLevel`(IN customerNo int, OUT customerLevel varchar(20))
+BEGIN
+  declare credit dec(10,2) default 0;
+  select creditLimit into credit from customers where customerNumber = customerNo;
+set customerLevel = CustomerLevel(credit);  
+END
+
+
+mysql> call GetCustomerLevel(-131,@customerLevel);
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> select @customerLevel;
++----------------+
+| @customerLevel |
++----------------+
+| SILVER         |
++----------------+
+1 row in set (0.00 sec)
+
+
+Write a stored procedure that checks the creditlimit and the purchase status of the customers. 
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetDeliveryStatus`(IN pOrderNumber int, OUT pDeliveryStatus varchar(100))
+BEGIN
+declare waitingDay int default 0;
+select datediff(requiredDate, shippedDate) into waitingDay from orders 
+where orderNumber = pOrderNumber;
+
+case
+	when waitingDay =0 then
+    set pDeliveryStatus = 'On Time';
+    when waitingDay >= 1 and waitingDay < 5 then
+    set pDeliveryStatus = 'Late';
+    when waitingDay >= 5 then
+    set pDeliveryStatus ='Very Late';
+    else
+    set pDeliveryStatus = 'No Information';
+    end case;
+    
+END
+
+
+mysql> call GetDeliveryStatus(10100,@delivery);
+Query OK, 1 row affected (0.04 sec)
+
++-------------+------------+--------------+-------------+---------+----------+----------------+
+| orderNumber | orderDate  | requiredDate | shippedDate | statuss | comments | customerNumber |
++-------------+------------+--------------+-------------+---------+----------+----------------+
+|       10100 | 2003-01-06 | 2003-01-13   | 2003-01-10  | Shipped | NULL     |            363 |
++-------------+------------+--------------+-------------+---------+----------+----------------+
+1 row in set (0.00 sec)
+
+
